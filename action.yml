@@ -1,0 +1,6 @@
+name: Setup wit-bindgen
+description: 👨‍💻 Install the wit-bindgen CLI for GitHub Actions
+
+branding:
+  icon: play
+  color: blue
