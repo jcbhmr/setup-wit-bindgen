@@ -52,7 +52,7 @@ if (!found) {
   const folder = `wit-bindgen-v${version}-${target}`
 
   found = await tc.downloadTool(
-    `https://github.com/bytecodealliance/wit-bindgen/releases/download/v${version}/${archive}`,
+    `https://github.com/bytecodealliance/wit-bindgen/releases/download/wit-bindgen-cli-${version}/${archive}`,
   );
   if (archive.endsWith(".zip")) {
     const unzipped = await tc.extractZip(found);
