@@ -21,13 +21,13 @@ if (versionRaw === "latest") {
     owner: "bytecodealliance",
     repo: "wit-bindgen",
   });
-  version = data.tag_name.slice(1);
+  version = data.tag_name.slice("wit-bindgen-cli-".length);
 } else {
   const releases = await octokit.paginate(octokit.rest.repos.listReleases, {
     owner: "bytecodealliance",
     repo: "wit-bindgen",
   });
-  const versions = releases.map((release) => release.tag_name.slice(1));
+  const versions = releases.map((release) => release.tag_name.slice("wit-bindgen-cli-".length));
   version = semver.maxSatisfying(versions, versionRaw)!;
 }
 core.debug(`Resolved version: v${version}`);
