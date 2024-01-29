@@ -44,16 +44,16 @@ if (!found) {
     "win32,x64": "x86_64-windows",
   }[[process.platform, process.arch].toString()]!;
   const archiveExt = {
-    "win32": ".zip",
-    "darwin": ".tar.gz",
-    "linux": ".tar.gz"
-  }[process.platform as string]
+    win32: ".zip",
+    darwin: ".tar.gz",
+    linux: ".tar.gz",
+  }[process.platform as string];
   const archive = `wit-bindgen-v${version}-${target}${archiveExt}`;
-  const folder = `wit-bindgen-v${version}-${target}`
+  const folder = `wit-bindgen-v${version}-${target}`;
 
-  found = await tc.downloadTool(
-    `https://github.com/bytecodealliance/wit-bindgen/releases/download/wit-bindgen-cli-${version}/${archive}`,
-  );
+  const url = `https://github.com/bytecodealliance/wit-bindgen/releases/download/wit-bindgen-cli-${version}/${archive}`;
+  core.info(`Fetching from '${url}'`);
+  found = await tc.downloadTool(url);
   if (archive.endsWith(".zip")) {
     const unzipped = await tc.extractZip(found);
     found = join(unzipped, folder);
